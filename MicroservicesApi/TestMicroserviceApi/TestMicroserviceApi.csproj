@@ -8,11 +8,19 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.14" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.3" />
+        <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.12" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
     </ItemGroup>
 
     <ItemGroup>
       <Folder Include="Controllers" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Microservices.Data\Microservices.Data.csproj" />
+      <ProjectReference Include="..\Microservices.Entities\Microservices.Entities.csproj" />
     </ItemGroup>
 
 </Project>

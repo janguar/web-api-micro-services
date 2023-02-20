@@ -3,23 +3,24 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Microservice.Data.Entities
+namespace Microservice.Entities
 {
     /// <summary>
-    /// The supplier.
+    /// The customer.
     /// </summary>
-    [Table("Suppliers")]
-    public partial class Supplier
+    [Table("Customers")]
+    public partial class Customer
     {
         /// <summary>
-        /// Gets or sets the supplier id.
+        /// Gets or sets the customer id.
         /// </summary>
-        public int SupplierID { get; set; }
+        [Required]
+        [StringLength(5, MinimumLength = 5)]
+        public string CustomerID { get; set; }
 
         /// <summary>
         /// Gets or sets the company name.
         /// </summary>
-        [Required]
         [StringLength(40)]
         public string CompanyName { get; set; }
 
@@ -78,13 +79,13 @@ namespace Microservice.Data.Entities
         public string Fax { get; set; }
 
         /// <summary>
-        /// Gets or sets the home page.
+        /// Gets or sets the orders.
         /// </summary>
-        public string HomePage { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
 
         /// <summary>
-        /// Gets or sets the products.
+        /// Gets or sets the customer demographics.
         /// </summary>
-        public virtual ICollection<Product> Products { get; set; }
+        public virtual ICollection<CustomerDemographic> CustomerDemographics { get; set; }
     }
 }

@@ -1,11 +1,9 @@
-using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Xml.Serialization;
+using System.Linq; 
 
-namespace Microservice.Data.Entities
+namespace Microservice.Entities
 {
     /// <summary>
     /// The category.

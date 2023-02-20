@@ -1,8 +1,25 @@
+using System.Text.Json.Serialization;
+using Microservice.Data;
+using Microsoft.EntityFrameworkCore; 
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddNewtonsoftJson(options => 
+        options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+    ).AddJsonOptions(x =>
+        x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles
+    );
+
+
+builder.Services.AddDbContext<IDbContext, DatabaseContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("NorthwindAPIConnectionString"));
+});
+
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -13,7 +30,7 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "Test App"); });
 }
 
 app.UseHttpsRedirection();

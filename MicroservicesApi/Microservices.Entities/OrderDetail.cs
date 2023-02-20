@@ -2,7 +2,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Microservice.Data.Entities
+namespace Microservice.Entities
 {
     /// <summary>
     /// The order detail.

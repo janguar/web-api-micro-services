@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Microservice.Data.Entities
+namespace Microservice.Entities
 {
     [Table("EmployeeTerritories")]
     public partial class EmployeeTerritory
